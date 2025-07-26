@@ -1,0 +1,12 @@
+{
+  "name": "subindexer-gnosis.public.dappnode.eth",
+  "version": "0.1.0",
+  "description": "Circles subscription indexer, API and redeemer",
+  "type": "service",
+  "author": "bh2smith",
+  "categories": ["Developer tools"],
+  "links": {
+    "homepage": "https://github.com/deluXtreme/"
+  },
+  "license": "GPL-3.0"
+}

@@ -1,0 +1,23 @@
+name: subindexer
+project_type: no-code
+networks:
+- name: gnosis
+  chain_id: 100
+  rpc: http://gnosis-erigon.dappnode:8545
+storage:
+  postgres:
+    enabled: true
+native_transfers:
+  enabled: false
+contracts:
+- name: SubscriptionModule
+  details:
+  - network: gnosis
+    address: 0xcEbE4B6d50Ce877A9689ce4516Fe96911e099A78
+    start_block: 41149803
+  abi: ./abis/SubscriptionModule.abi.json
+  include_events:
+  - SubscriptionCreated
+  - Unsubscribed
+  - Redeemed
+  - RecipientUpdated
