@@ -5,8 +5,49 @@
   "type": "service",
   "author": "bh2smith",
   "categories": ["Developer tools"],
+  "requirements": {
+    "minimumDappnodeVersion": "0.3.10"
+  },
+  "exposable": [
+    {
+      "name": "Subscription API",
+      "description": "API endpoint for Redeemable Subscriptions",
+      "serviceName": "redeemable",
+      "port": 3030
+    }
+  ],
   "links": {
+    "api": "http://subindexer-gnosis.dappnode:3030",
     "homepage": "https://github.com/deluXtreme/"
   },
-  "license": "GPL-3.0"
+  "license": "GPL-3.0",
+  "setupWizard": {
+    "version": "2",
+    "fields": [
+      {
+        "id": "redeemer_pk",
+        "target": {
+          "type": "environment",
+          "name": "REDEEMER_PK",
+          "service": "api"
+        },
+        "title": "Redeemer Private Key",
+        "description": "Private key for the redeemer account (keep this secret!)",
+        "secret": true,
+        "required": true
+      },
+      {
+        "id": "gnosis_rpc_url",
+        "target": {
+          "type": "environment",
+          "name": "GNOSIS_RPC_URL",
+          "service": "api"
+        },
+        "title": "Gnosis RPC URL",
+        "description": "RPC endpoint for Gnosis Chain",
+        "required": false,
+        "default": "http://gnosis-erigon.dappnode:8545"
+      }
+    ]
+  }
 }
