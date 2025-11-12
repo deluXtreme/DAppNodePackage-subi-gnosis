@@ -4,7 +4,9 @@ volumes:
   project_data: {}
 services:
   postgresql:
-    image: postgres:18
+    build:
+      context: db
+      dockerfile: Dockerfile
     restart: unless-stopped
     volumes:
       - postgres_data:/var/lib/postgresql
