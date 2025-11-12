@@ -3,7 +3,7 @@ volumes:
   postgres_data: {}
   project_data: {}
 services:
-  postgres:
+  database:
     build:
       context: db
       dockerfile: Dockerfile
@@ -29,7 +29,7 @@ services:
       context: rindexer
       dockerfile: Dockerfile
     depends_on:
-      postgres:
+      database:
         condition: service_healthy
     volumes:
       - project_data:/app/project_path
@@ -38,17 +38,17 @@ services:
       - start
       - indexer
     environment:
-      DATABASE_URL: postgres://postgres:rindexer@postgresql:5432/postgres
+      DATABASE_URL: postgres://postgres:rindexer@database:5432/postgres
     image: indexer.subindexer-gnosis.public.dappnode.eth:0.1.0
   api:
     build:
       context: api
       dockerfile: Dockerfile
     depends_on:
-      postgres:
+      database:
         condition: service_healthy
     environment:
-      DATABASE_URL: postgres://postgres:rindexer@postgresql:5432/postgres
+      DATABASE_URL: postgres://postgres:rindexer@database:5432/postgres
       API_PORT: 3000
       REDEEM_INTERVAL: 3600
       REDEEMER_PK:
