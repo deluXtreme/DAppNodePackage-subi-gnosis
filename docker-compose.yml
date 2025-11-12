@@ -8,6 +8,10 @@ services:
       context: db
       dockerfile: Dockerfile
     restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: rindexer
+      POSTGRES_DB: postgres
     volumes:
       - postgres_data:/var/lib/postgresql
     ports:
@@ -48,7 +52,7 @@ services:
       API_PORT: 3000
       REDEEM_INTERVAL: 3600
       REDEEMER_PK:
-      GNOSIS_RPC_URL:
+      GNOSIS_RPC_URL: http://gnosis-erigon.dappnode:8545
     ports:
       - 3030:3000
     restart: unless-stopped

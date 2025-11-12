@@ -12,12 +12,12 @@
     {
       "name": "Subscription API",
       "description": "API endpoint for Redeemable Subscriptions",
-      "serviceName": "redeemable",
+      "serviceName": "api",
       "port": 3030
     }
   ],
   "links": {
-    "api": "http://subindexer-gnosis.dappnode:3030",
+    "api": "http://api.subindexer-gnosis.public.dappnode.eth:3030/redeemable",
     "homepage": "https://github.com/deluXtreme/"
   },
   "license": "GPL-3.0",
