@@ -3,7 +3,7 @@ volumes:
   postgres_data: {}
   project_data: {}
 services:
-  postgresql:
+  postgres:
     build:
       context: db
       dockerfile: Dockerfile
@@ -29,7 +29,7 @@ services:
       context: rindexer
       dockerfile: Dockerfile
     depends_on:
-      postgresql:
+      postgres:
         condition: service_healthy
     volumes:
       - project_data:/app/project_path
@@ -45,7 +45,7 @@ services:
       context: api
       dockerfile: Dockerfile
     depends_on:
-      postgresql:
+      postgres:
         condition: service_healthy
     environment:
       DATABASE_URL: postgres://postgres:rindexer@postgresql:5432/postgres
