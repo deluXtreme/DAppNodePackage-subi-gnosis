@@ -37,6 +37,18 @@
         "required": true
       },
       {
+        "id": "redeem_interval",
+        "target": {
+          "type": "environment",
+          "name": "REDEEM_INTERVAL",
+          "service": "api"
+        },
+        "title": "Redeem Interval",
+        "description": "Seconds between redemptions",
+        "required": false,
+        "default": "86400"
+      },
+      {
         "id": "gnosis_rpc_url",
         "target": {
           "type": "environment",
