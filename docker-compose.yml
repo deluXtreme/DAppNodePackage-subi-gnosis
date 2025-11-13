@@ -42,9 +42,9 @@ services:
       database:
         condition: service_healthy
     environment:
-      REDEEM_INTERVAL: 3600
       REDEEMER_PK:
-      GNOSIS_RPC_URL: http://gnosis-erigon.dappnode:8545
+      REDEEM_INTERVAL: 86400
+      GNOSIS_RPC_URL: http://execution.gnosis.dncore.dappnode:8545
     ports:
       - 3030:3000
     restart: unless-stopped
