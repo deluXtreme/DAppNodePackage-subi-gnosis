@@ -17,7 +17,7 @@
     }
   ],
   "links": {
-    "api": "http://api.subindexer-gnosis.public.dappnode.eth:3000/redeemable",
+    "api": "http://api.subindexer-gnosis.public.dappnode:3000/redeemable",
     "homepage": "https://github.com/deluXtreme/"
   },
   "license": "GPL-3.0",
