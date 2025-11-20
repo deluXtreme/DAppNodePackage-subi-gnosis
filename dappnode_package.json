@@ -1,6 +1,6 @@
 {
   "name": "subindexer-gnosis.public.dappnode.eth",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Circles subscription indexer, API and redeemer",
   "type": "service",
   "author": "bh2smith",
