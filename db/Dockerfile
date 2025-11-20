@@ -1,5 +1,0 @@
-FROM postgres:18
-
-ENV POSTGRES_USER=postgres
-ENV POSTGRES_PASSWORD=rindexer
-ENV POSTGRES_DB=postgres

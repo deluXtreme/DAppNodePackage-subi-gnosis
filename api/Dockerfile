@@ -1,4 +1,4 @@
-FROM ghcr.io/deluxtreme/subindexer:latest
+FROM ghcr.io/deluxtreme/subindexer:v0.0.6-sqlite
 
-ENV DATABASE_URL=postgres://postgres:rindexer@database:5432/postgres
+ENV DATABASE_URL=/app/data/rindexer.db
 ENV API_PORT=3000

@@ -1,46 +1,26 @@
 version: "3.5"
 volumes:
-  postgres_data: {}
-  project_data: {}
+  event_data: {}
 services:
-  database:
-    build:
-      context: db
-      dockerfile: Dockerfile
-    restart: unless-stopped
-    volumes:
-      - postgres_data:/var/lib/postgresql
-    ports:
-      - "5440:5432"
-    healthcheck:
-      test:
-        - CMD-SHELL
-        - pg_isready -U postgres
-      interval: 5s
-      timeout: 5s
-      retries: 5
-      start_period: 10s
   indexer:
     build:
       context: rindexer
       dockerfile: Dockerfile
-    depends_on:
-      database:
-        condition: service_healthy
     volumes:
-      - project_data:/app/project_path
-    working_dir: /app/project_path
+      - event_data:/app/data
     command:
       - start
       - indexer
-    image: indexer.subindexer-gnosis.public.dappnode.eth:0.1.0
+    image: indexer.subindexer-gnosis.public.dappnode.eth:0.2.0
   api:
     build:
       context: api
       dockerfile: Dockerfile
+    volumes:
+      - event_data:/app/data
     depends_on:
-      database:
-        condition: service_healthy
+      indexer:
+        condition: service_started
     environment:
       REDEEMER_PK:
       REDEEM_INTERVAL: 86400
@@ -48,4 +28,4 @@ services:
     ports:
       - 3030:3000
     restart: unless-stopped
-    image: api.subindexer-gnosis.public.dappnode.eth:0.1.0
+    image: api.subindexer-gnosis.public.dappnode.eth:0.2.0

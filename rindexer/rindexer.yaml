@@ -5,7 +5,7 @@ networks:
   chain_id: 100
   rpc: http://execution.gnosis.dncore.dappnode:8545
 storage:
-  postgres:
+  sqlite:
     enabled: true
 native_transfers:
   enabled: false
