@@ -4,13 +4,12 @@ volumes:
 services:
   indexer:
     build:
-      context: rindexer
+      context: indexer
       dockerfile: Dockerfile
     volumes:
       - event_data:/app/data
-    command:
-      - start
-      - indexer
+    entrypoint: ["/usr/bin/tini", "--"]
+    command: ["/opt/arak/arak"]
     image: indexer.subindexer-gnosis.public.dappnode.eth:0.2.0
   api:
     build:

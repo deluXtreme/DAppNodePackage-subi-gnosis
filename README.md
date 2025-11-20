@@ -6,8 +6,8 @@ A DappNode package that indexes, queries, and auto-redeems Circles subscription 
 
 This package provides a complete solution for monitoring and interacting with the Circles SubscriptionModule contract (`0xcEbE4B6d50Ce877A9689ce4516Fe96911e099A78`). It consists of three main services:
 
-- **Indexer**: Uses [rindexer](https://github.com/joshstevens19/rindexer) to index subscription events from Gnosis Chain
-- **Database**: PostgreSQL database for storing indexed events
+- **Indexer**: Uses [arak](https://github.com/bh2smith/arak) to index subscription events from Gnosis Chain
+- **SQLite**: Simple file shared file between indexer and api server.
 - **API**: REST API for querying redeemable subscriptions and automatically redeeming them
 
 ## Features
@@ -69,14 +69,13 @@ The API is exposed on port `3030` and can be accessed through DappNode's exposab
          │
          v
 ┌─────────────────┐
-│     Indexer     │ (rindexer)
+│     Indexer     │ (arak)
 │  Port: Internal │
 └────────┬────────┘
          │
          v
 ┌─────────────────┐
-│    Database     │ (PostgreSQL)
-│   Port: 5440    │
+│    DB File      │ (SQLite)
 └────────┬────────┘
          │
          v
@@ -92,13 +91,10 @@ The API is exposed on port `3030` and can be accessed through DappNode's exposab
 
 ```
 .
-├── api/              # REST API service
+├── api/             # REST API service
 │   └── Dockerfile
-├── db/               # PostgreSQL database
-│   └── Dockerfile
-├── rindexer/         # Blockchain indexer
-│   ├── rindexer.yaml # Indexer configuration
-│   ├── abis/         # Contract ABIs
+├── indexer/         # Blockchain indexer
+│   ├── arak.toml    # Indexer configuration
 │   └── Dockerfile
 ├── docker-compose.yml
 └── dappnode_package.json
@@ -109,9 +105,6 @@ The API is exposed on port `3030` and can be accessed through DappNode's exposab
 ```bash
 # Start all services
 docker-compose up
-
-# Access the database
-psql -h localhost -p 5440 -U postgres
 
 # Test the API
 curl http://localhost:3030/redeemable
