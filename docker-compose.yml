@@ -10,7 +10,7 @@ services:
       - event_data:/app/data
     entrypoint: ["/usr/bin/tini", "--"]
     command: ["/opt/arak/arak"]
-    image: indexer.subindexer-gnosis.public.dappnode.eth:0.2.0
+    image: indexer.subindexer-gnosis.public.dappnode.eth:0.3.0
   api:
     build:
       context: api
@@ -27,4 +27,4 @@ services:
     ports:
       - 3030:3000
     restart: unless-stopped
-    image: api.subindexer-gnosis.public.dappnode.eth:0.2.0
+    image: api.subindexer-gnosis.public.dappnode.eth:0.3.0
