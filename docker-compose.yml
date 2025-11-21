@@ -4,14 +4,13 @@ volumes:
 services:
   indexer:
     build:
-      context: rindexer
+      context: indexer
       dockerfile: Dockerfile
     volumes:
       - event_data:/app/data
-    command:
-      - start
-      - indexer
-    image: indexer.subindexer-gnosis.public.dappnode.eth:0.2.0
+    entrypoint: ["/usr/bin/tini", "--"]
+    command: ["/opt/arak/arak"]
+    image: indexer.subindexer-gnosis.public.dappnode.eth:0.3.0
   api:
     build:
       context: api
@@ -28,4 +27,4 @@ services:
     ports:
       - 3030:3000
     restart: unless-stopped
-    image: api.subindexer-gnosis.public.dappnode.eth:0.2.0
+    image: api.subindexer-gnosis.public.dappnode.eth:0.3.0
