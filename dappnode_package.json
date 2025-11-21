@@ -4,7 +4,7 @@
   "description": "Circles subscription indexer, API and redeemer",
   "type": "service",
   "author": "bh2smith",
-  "categories": ["Developer tools"],
+  "categories": ["Developer tools", "Blockchain"],
   "requirements": {
     "minimumDappnodeVersion": "0.3.10"
   },

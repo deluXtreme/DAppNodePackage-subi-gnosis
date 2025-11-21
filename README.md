@@ -8,7 +8,10 @@ This package provides a complete solution for monitoring and interacting with th
 
 - **Indexer**: Uses [arak](https://github.com/bh2smith/arak) to index subscription events from Gnosis Chain
 - **SQLite**: Simple file shared file between indexer and api server.
-- **API**: REST API for querying redeemable subscriptions and automatically redeeming them
+- **API**: REST API for querying redeemable subscriptions.
+- **Redeemer**: Utilizing EIP7702 [EOAMultisend](https://github.com/bh2smith/eip7702) for batch redemptions.
+
+See [https://github.com/deluXtreme/subindexer](https://github.com/deluXtreme/subindexer) as primary source.
 
 ## Features
 
