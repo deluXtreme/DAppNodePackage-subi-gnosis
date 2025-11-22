@@ -2,9 +2,9 @@ version: "3.5"
 volumes:
   event_data: {}
 services:
-  indexer:
+  arak:
     build:
-      context: indexer
+      context: arak
       dockerfile: Dockerfile
     volumes:
       - event_data:/app/data
@@ -18,7 +18,7 @@ services:
     volumes:
       - event_data:/app/data
     depends_on:
-      indexer:
+      arak:
         condition: service_started
     environment:
       REDEEMER_PK:
